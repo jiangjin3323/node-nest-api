@@ -1,4 +1,4 @@
-import { Injectable,HttpStatus } from '@nestjs/common';
+import { Injectable, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from '../entity/user.entity';
@@ -25,12 +25,16 @@ export class UserService {
     const userList: User[] = await this.findUser({ account: user.account });
     if (userList.length < 1) return await this.register(user);
     if (userList[0].password === user.password) {
-      await this.userList.update(userList[0].id,{loginTime:new Date()})
+      const token: string = await this.auth.createToken(userList[0].id);
+      await this.userList.update(userList[0].id, {
+        loginTime: new Date(),
+        sign: token,
+      });
       return {
         msg: ' OK',
         data: {
           name: userList[0].name,
-          sign: userList[0].sign,
+          sign: token,
         },
         code: HttpStatus.OK,
       };
