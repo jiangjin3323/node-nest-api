@@ -25,6 +25,7 @@ export class UserService {
     const userList: User[] = await this.findUser({ account: user.account });
     if (userList.length < 1) return await this.register(user);
     if (userList[0].password === user.password) {
+      await this.userList.update(userList[0].id,{loginTime:new Date()})
       return {
         msg: ' OK',
         data: {
