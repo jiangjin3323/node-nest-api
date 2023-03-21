@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
 import { UserModule } from './api/user/user.module';
+import { BannerModule } from './api/banner/banner.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 @Module({
   imports: [
     UserModule,
+    BannerModule,
     TypeOrmModule.forRoot({
       type: 'mysql', // 数据库类型
       host: 'localhost', // 数据库的连接地址host
