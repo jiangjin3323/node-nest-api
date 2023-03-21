@@ -22,9 +22,9 @@ export class BannerService {
   async addBannerFunc(banner: Banner): Promise<interfaceReturnType> {
     if (!banner.url) {
       return {
-        msg: '轮播“url”未必填项～',
+        msg: 'url为必填项～',
         data: null,
-        code: HttpStatus.NOT_FOUND,
+        code: HttpStatus.FORBIDDEN,
       };
     }
     await this.bannerList.save({
