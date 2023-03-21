@@ -11,13 +11,13 @@ export class Banner {
   id: number;
 
   @Column()
-  title: string;
+  title?: string;
 
   @Column()
   url: string;
 
   @Column()
-  linkUrl: string;
+  linkUrl?: string;
 
   @CreateDateColumn()
   createTime?: Date;
