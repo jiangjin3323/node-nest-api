@@ -8,7 +8,7 @@ export class UserController {
 
   @Post()
   async loginFunc(@Body() user: any, @Res() Res: Response): Promise<interfaceReturnType> {
-    const res = await this.userService.login(user);
+    const res = await this.userService.loginAndRegister(user);
     Res.status(res.code).json(res);
     return;
   }
