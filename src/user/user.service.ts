@@ -85,7 +85,7 @@ export class UserService {
     //user表查询不到执行注册
     if (userList.length < 1) return await this.register(user);
     //执行登录
-    await this.login(user, userList);
+    return await this.login(user, userList);
   }
 
   //token 生成函数

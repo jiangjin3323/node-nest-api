@@ -3,7 +3,7 @@ import { HttpStatus } from '@nestjs/common';
 import * as jwt from 'jsonwebtoken';
 
 /************ token 鉴权 中间件 start ***************/
-export const whiteList: string[] = ['/login'];
+const whiteList: string[] = ['/api/v1/login'];
 export const middleWareAll = async (
   req: Request,
   res: Response,
