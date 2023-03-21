@@ -2,8 +2,8 @@ import { Injectable, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import * as jwt from 'jsonwebtoken';
-import { User } from '../entity/user.entity';
-import { interfaceReturnType } from '../type/type';
+import { User } from '../../entity/user.entity';
+import { interfaceReturnType } from '../../type/type';
 @Injectable()
 export class UserService {
   private readonly JWT_SECRET = 'mysecretkey';
