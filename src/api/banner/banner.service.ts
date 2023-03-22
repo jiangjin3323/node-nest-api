@@ -38,4 +38,45 @@ export class BannerService {
       code: HttpStatus.OK,
     };
   }
+
+  async updateBanner(banner: Banner): Promise<interfaceReturnType> {
+    if (!banner.id) {
+      return {
+        msg: 'id为必填项～',
+        data: null,
+        code: HttpStatus.FORBIDDEN,
+      };
+    }
+    if (!banner.url) {
+      return {
+        msg: 'url为必填项～',
+        data: null,
+        code: HttpStatus.FORBIDDEN,
+      };
+    }
+    await this.bannerList.update(banner.id, {
+      ...banner,
+    });
+    return {
+      msg: 'ok',
+      data: null,
+      code: HttpStatus.OK,
+    };
+  }
+
+  async deleteBanner(banner: { id: number }): Promise<interfaceReturnType> {
+    if (!banner.id) {
+      return {
+        msg: 'id为必填项～',
+        data: null,
+        code: HttpStatus.FORBIDDEN,
+      };
+    }
+    await this.bannerList.delete(banner.id);
+    return {
+      msg: 'ok',
+      data: null,
+      code: HttpStatus.OK,
+    };
+  }
 }

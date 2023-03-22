@@ -91,7 +91,7 @@ export class UserService {
   //token 生成函数
   async createToken(userId: number): Promise<string> {
     const payload = { sub: userId };
-    const token = jwt.sign(payload, this.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign(payload, this.JWT_SECRET, { expiresIn: '3d' });
     return token;
   }
 }
