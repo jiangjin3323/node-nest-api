@@ -1,4 +1,4 @@
-import { Injectable, HttpStatus } from '@nestjs/common';
+import { Injectable, HttpStatus, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import * as jwt from 'jsonwebtoken';
@@ -43,11 +43,7 @@ export class UserService {
         code: HttpStatus.OK,
       };
     }
-    return {
-      msg: '账号或密码输入错误～',
-      data: null,
-      code: HttpStatus.FORBIDDEN,
-    };
+    throw new BadRequestException('账号或密码输入错误～');
   }
 
   //注册函数
