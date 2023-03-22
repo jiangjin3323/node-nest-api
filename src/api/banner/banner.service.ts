@@ -38,6 +38,7 @@ export class BannerService {
     if (!banner.url) throw new BadRequestException('url为必填项～');
     await this.bannerList.update(banner.id, {
       ...banner,
+      updataTime:new Date(),
     });
     return {
       msg: 'ok',
