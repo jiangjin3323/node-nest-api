@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Res } from '@nestjs/common';
+import { Controller, Get, Post, Body, Res,Query } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { interfaceReturnType } from '../../type/type';
 import { Response } from 'express';
@@ -7,8 +7,9 @@ export class ProductController {
   constructor(private readonly ProductService: ProductService) {}
 
   @Get()
-  async getProductList(@Res() Res: Response): Promise<interfaceReturnType> {
-    const res = await this.ProductService.listFunc();
+  async getProductList(@Query() itme:{type:string}, @Res() Res: Response): Promise<interfaceReturnType> {
+    console.log(itme);
+    const res = await this.ProductService.listFunc(itme);
     Res.status(res.code).json(res);
     return;
   }

@@ -10,8 +10,10 @@ export class ProductService {
     private readonly ProductList: Repository<Product>,
   ) {}
 
-  async listFunc(): Promise<interfaceReturnType> {
-    const res = await this.ProductList.find();
+  async listFunc(item: { type: string } = {type:'xiaomi'}): Promise<interfaceReturnType> {
+    const res = await this.ProductList.find({
+      where: item,
+    });
     return {
       msg: 'ok',
       data: res,

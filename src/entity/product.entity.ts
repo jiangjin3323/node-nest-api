@@ -18,11 +18,19 @@ import {
     
     @Column()
     name: string;
+
+    @Column()
+    type?: string;
   
     @CreateDateColumn()
     createTime?: Date;
     
     @CreateDateColumn()
     updataTime?: Date;
+
+    constructor(partial: Partial<Product>) {
+        Object.assign(this, partial);
+        this.type = this.type || 'xiaomi'; // 默认设置为xiaomi
+      }
   }
   
