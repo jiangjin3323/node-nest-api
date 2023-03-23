@@ -9,8 +9,13 @@ export const middleWareAll = async (
   res: Response,
   next: NextFunction,
 ) => {
-  console.log('全局中间件！')
+  console.log('全局中间件！');
   if (whiteList.includes(req.originalUrl)) {
+    next();
+    return;
+  }
+  //get 请求不鉴权
+  if (req.method === 'GET') {
     next();
     return;
   }
