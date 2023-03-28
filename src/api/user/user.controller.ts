@@ -12,4 +12,11 @@ export class UserController {
     Res.status(res.code).json(res);
     return;
   }
+
+  @Get('user')
+  async userListFunc(@Res() Res: Response):Promise<interfaceReturnType>  {
+    const res = await this.userService.findUserAll();
+    Res.status(res.code).json(res);
+    return;
+  }
 }

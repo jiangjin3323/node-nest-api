@@ -20,6 +20,16 @@ export class UserService {
     return userList;
   }
 
+  //查询所有用户
+  async findUserAll(): Promise<interfaceReturnType> {
+    const userList = await this.userList.find();
+    return {
+      code: HttpStatus.OK,
+      data: userList,
+      msg: 'ok',
+    };
+  }
+
   //登录函数
   async login(
     user: {
